@@ -11,6 +11,7 @@ stocks = ['AAPL', 'WMT', 'TSLA', 'GE', 'AMZN', 'DB']
 start_date = '2010-01-01'
 end_date = '2022-01-01'
 
+
 def download_data():
     # name of the stocks(key) - stocks values
     stock_data = {}
@@ -20,6 +21,7 @@ def download_data():
         stock_data[stock] = ticker.history(start=start_date, end=end_date)['Close']
 
     return pd.DataFrame(stock_data)
+
 
 def show_data(data):
     data.plot(figsize=(10, 5))
