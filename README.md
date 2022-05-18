@@ -7,3 +7,5 @@ Qunatitative Finance
 - Then Capital Asset Pricing Model (CAPM).
 - Black-Scholes model.
 - How to eliminate risk with hedging.
+
+![img.png](docs/doc.png)
