@@ -27,7 +27,7 @@ def download_data():
     for stock in STOCKS:
         ticker = yf.Ticker(stock)
         stock_data[stock] = ticker.history(start=start_date, end=end_date)['Close']
-
+        print(stock_data)
     return pd.DataFrame(stock_data)
 
 
