@@ -2,10 +2,10 @@ from pycoingecko import CoinGeckoAPI
 from datetime import datetime
 import pandas as pd
 
-from api.Constants import DateFormats
+from application.api.Constants import DateFormats
 
 
-class PortfolioCoinGeckoApi(object):
+class CoinGeckoApi(object):
 
     def __init__(self, quote_currency):
         self.api_cg = CoinGeckoAPI()
@@ -66,7 +66,7 @@ class PortfolioCoinGeckoApi(object):
 
 if __name__ == '__main__':
     ticker = 'btc'
-    papi = PortfolioCoinGeckoApi('usd')
+    papi = CoinGeckoApi('usd')
     prices = papi.get_historical_prices(ticker, '2020-01-01', '2022-01-01')
     print(prices)
     data_set = pd.DataFrame({ticker: prices})
