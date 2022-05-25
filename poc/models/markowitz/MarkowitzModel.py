@@ -1,8 +1,8 @@
 import numpy as np
-import yfinance as yf
-import pandas as pd
 import matplotlib.pyplot as plt
 import scipy.optimize as optimization
+
+from poc.models.CommonModel import download_data
 
 # Stocks of the index
 STOCKS = ['AAPL', 'WMT', 'TSLA', 'GE', 'AMZN', 'DB']
@@ -19,16 +19,6 @@ NUM_CALENDAR_DAYS = 365
 
 # It will generate random w (different portfolios)
 NUM_PORTFOLIOS = 100000
-
-def download_data():
-    # name of the stocks(key) - stocks values
-    stock_data = {}
-
-    for stock in STOCKS:
-        ticker = yf.Ticker(stock)
-        stock_data[stock] = ticker.history(start=start_date, end=end_date)['Close']
-        print(stock_data)
-    return pd.DataFrame(stock_data)
 
 
 # log daily return
@@ -162,7 +152,7 @@ if __name__ == '__main__':
     period = NUM_TRADING_DAYS
 
     print('Loading data...')
-    data_set = download_data()
+    data_set = download_data(STOCKS, start_date, end_date)
     print('Plotting data-set...')
     show_data(data_set)
 
