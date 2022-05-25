@@ -14,12 +14,9 @@ NUM_TRADING_DAYS = 252
 NUM_PORTFOLIOS = 10000
 
 # stocks we are going to handle
-#stocks = ['AAPL', 'WMT', 'TSLA', 'GE', 'AMZN', 'DB']
+stocks = ['AAPL', 'WMT', 'TSLA', 'GE', 'AMZN', 'DB']
 
-stocks = ['btc', 'eth', 'bnb', 'sol', 'luna', 'xrp',
-                  'leo', 'kcs', 'ftm', 'midas', 'ftt',
-                  'cro', 'cake', 'shib', 'ada', 'avax',
-                  'trx', 'ltc', 'matic', 'okb', 'klay']
+#stocks = ['btc', 'eth', 'bnb', 'sol', 'luna', 'xrp', 'leo', 'kcs', 'ftm', 'midas', 'ftt', 'cro', 'cake', 'shib', 'ada', 'avax', 'trx', 'ltc', 'matic', 'okb', 'klay']
 
 
 # historical data - define START and END dates
@@ -54,7 +51,8 @@ def show_data(data):
 
 def calculate_return(data):
     # NORMALIZATION - to measure all variables in comparable metric
-    log_return = np.log(data / data.shift(1))
+    #log_return = np.log(data / data.shift(1))
+    log_return = data.pct_change()
     return log_return[1:]
 
 
@@ -143,8 +141,8 @@ def show_optimal_portfolio(opt, rets, portfolio_rets, portfolio_vols):
 
 
 if __name__ == '__main__':
-    #dataset = download_data()
-    dataset = loading_historical_data(stocks, start_date, end_date, 'usd')
+    dataset = download_data()
+    #dataset = loading_historical_data(stocks, start_date, end_date, 'usd')
     show_data(dataset)
     log_daily_returns = calculate_return(dataset)
     show_statistics(log_daily_returns)

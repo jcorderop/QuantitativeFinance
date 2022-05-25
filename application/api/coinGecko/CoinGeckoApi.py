@@ -1,8 +1,21 @@
+import time
+import traceback
+
 from pycoingecko import CoinGeckoAPI
 from datetime import datetime
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from application.api.Constants import DateFormats
+from application.api.common.PortfolioException import PortfolioException
+
+
+def show_data(data_set):
+    print('Data set:')
+    print(data_set)
+    data_set.plot(figsize=(10, 5))
+    plt.title('Underlying Historical Prices')
+    plt.show()
 
 
 class CoinGeckoApi(object):
@@ -35,7 +48,11 @@ class CoinGeckoApi(object):
         return self.api_cg.get_coins_markets(vs_currency=self.quote_currency)
 
     def get_coin_id(self, ticker):
-        return self.__tickers[ticker]
+        try:
+            return self.__tickers[ticker]
+        except Exception:
+            traceback.print_stack()
+            raise PortfolioException('Ticker not found: {}'.format(ticker))
 
     def __convert_date_to_timestamp__(self, date_string):
         dt_object = datetime.strptime(date_string, DateFormats.date_format)
@@ -62,6 +79,16 @@ class CoinGeckoApi(object):
                                                                       to_timestamp=to_timestamp)
         print('Loading data has finished...')
         return self.__json_price_to_pandas_series__(historic_data['prices'])
+
+    def loading_historical_data(self, list_of_tickers, from_date, to_date):
+        data_series = {}
+        for ticker in list_of_tickers:
+            data_series[ticker] = self.get_historical_prices(ticker, from_date, to_date)
+            time.sleep(2.5)
+        data_set = pd.DataFrame(data_series)
+        print('Plotting data-set...')
+        show_data(data_set)
+        return data_set
 
 
 if __name__ == '__main__':
