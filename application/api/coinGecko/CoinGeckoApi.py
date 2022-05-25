@@ -6,8 +6,8 @@ from datetime import datetime
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from application.api.Constants import DateFormats
-from application.api.common.PortfolioException import PortfolioException
+from application.api.common.Constants import DateFormats
+from application.api.common.FinanceException import FinanceException
 
 
 def show_data(data_set):
@@ -52,7 +52,7 @@ class CoinGeckoApi(object):
             return self.__tickers[ticker]
         except Exception:
             traceback.print_stack()
-            raise PortfolioException('Ticker not found: {}'.format(ticker))
+            raise FinanceException('Ticker not found: {}'.format(ticker))
 
     def __convert_date_to_timestamp__(self, date_string):
         dt_object = datetime.strptime(date_string, DateFormats.date_format)

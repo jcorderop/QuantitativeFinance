@@ -3,9 +3,9 @@ import traceback
 from flask import Blueprint, Response, request
 import json
 
-from application.api import PortfolioService
-from application.api.common import PortfolioRequest, PortfolioException
-from application.api.common.PortfolioResponse import CommonResponse, PortfolioResponse, Status
+from application.api.common.FinanceException import FinanceException
+from application.api.portfolio import PortfolioService, PortfolioRequest
+from application.api.common.Responses import CommonResponse, PortfolioResponse, Status
 
 portfolio = Blueprint('portfolio', __name__)
 portfolio.url_prefix = '/portfolio'
@@ -32,7 +32,7 @@ def calculate_portfolio():
             performance, weights_by_underlying = PortfolioService.calculate_portfolio(pf_request)
             return Response(json.dumps(PortfolioResponse(performance, weights_by_underlying).__dict__),
                             mimetype=APPLICATION_JSON)
-        except PortfolioException.PortfolioException as e:
+        except FinanceException as e:
             traceback.print_stack()
             return Response(json.dumps(CommonResponse(Status.error, 'Invalid request: ' + e.__str__()).__dict__),
                             mimetype=APPLICATION_JSON)

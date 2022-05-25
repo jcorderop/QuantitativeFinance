@@ -1,5 +1,5 @@
 from application.api.coinGecko.CoinGeckoApi import CoinGeckoApi
-from application.api.model.markowitz.MarkowitzModelApi import MarkowitzModelApi
+from application.api.models.markowitz.MarkowitzModelApi import MarkowitzModelApi
 
 
 def preparing_data_set(list_of_tickers, from_date, to_date, quote_currency):

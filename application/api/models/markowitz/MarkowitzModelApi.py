@@ -5,8 +5,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import scipy.optimize as optimization
 
-from application.api.Constants import SolverType
-from application.api.common.PortfolioException import PortfolioException
+from application.api.common.Constants import SolverType
+from application.api.common.FinanceException import FinanceException
 
 NUM_PORTFOLIOS = 10000
 
@@ -32,7 +32,7 @@ def calculate_daily_return(data_set, callback):
         return daily_return[1:]
     except Exception:
         traceback.print_stack()
-        raise PortfolioException("Invalid calculation using daily return function {}...".format(callback))
+        raise FinanceException("Invalid calculation using daily return function {}...".format(callback))
 
 
 # instead of daily metric we can to calculate them by period
@@ -168,7 +168,7 @@ def get_daily_return_callback(daily_return_callback):
         return callback.get(daily_return_callback)
     except Exception:
         traceback.print_stack()
-        raise PortfolioException("Invalid daily calculation function...")
+        raise FinanceException("Invalid daily calculation function...")
 
 
 class MarkowitzModelApi(object):

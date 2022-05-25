@@ -33,7 +33,7 @@ if __name__ == '__main__':
     # duration (years)
     periods_years = 5
 
-    print("Future value (discrete model) of   x: %s" % future_discrete_value(amount, interest_rate, periods_years))
-    print("Present value (discrete model) value of  x: %s" % present_discrete_value(amount, interest_rate, periods_years))
-    print("Future value (continues model) value of  x: %s" % future_continues_value(amount, interest_rate, periods_years))
-    print("Present value (continues model) value of x: %s" % present_continues_value(amount, interest_rate, periods_years))
+    print("Future value (discrete models) of   x: %s" % future_discrete_value(amount, interest_rate, periods_years))
+    print("Present value (discrete models) value of  x: %s" % present_discrete_value(amount, interest_rate, periods_years))
+    print("Future value (continues models) value of  x: %s" % future_continues_value(amount, interest_rate, periods_years))
+    print("Present value (continues models) value of x: %s" % present_continues_value(amount, interest_rate, periods_years))
