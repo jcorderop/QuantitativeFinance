@@ -4,11 +4,12 @@ Geometrical brownian motion
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 '''
 S0  it is the initial value of the stock
 T   time horizont
 N   number of items to generate
-mu  mean of the random walk
+mu  mean of the random walk 
 sigma   random fluctuation around the mean
         the size of the sigma is the size the fluctuation
 '''
