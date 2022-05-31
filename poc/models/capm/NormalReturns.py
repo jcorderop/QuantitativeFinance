@@ -23,7 +23,7 @@ def show_plot(stock_data):
     stock_variance = stock_data.var()
     stock_mean = stock_data.mean()
     sigma = np.sqrt(stock_variance)
-    x = np.linspace(stock_mean - 3 * sigma, stock_mean + 3 * sigma, 100)
+    x = np.linspace(stock_mean - 5 * sigma, stock_mean + 5 * sigma, 100)
     plt.plot(x, norm.pdf(x, stock_mean, sigma))
     plt.show()
 

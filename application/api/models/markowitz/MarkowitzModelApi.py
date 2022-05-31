@@ -146,6 +146,7 @@ def optimized_portfolio(daily_return, period, solver=None):
         constraints = (const_sum_of_weights, const_solver_fun)
     else:
         constraints = (const_sum_of_weights)
+    print('constraints', constraints)
     # the weights can be 1 at mist: 1 when 100% of money is invested into a single stock
     bounds = tuple((0, 1) for _ in range(elements))
     weights = [1 / elements for x in range(elements)]

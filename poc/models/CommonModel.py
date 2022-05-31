@@ -35,7 +35,7 @@ def calculate_return_log(prices):
 def calculate_return_pct(prices):
     # calculate daily logarithmic return
     prices['returns'] = prices.pct_change()
-    return prices.returns.mean()
+    return float(prices.returns.mean())
 
 
 def calculate_volatility(prices):
@@ -44,4 +44,4 @@ def calculate_volatility(prices):
     # annualized daily standard deviation
     prices['volatility'] = daily_std * 252 ** 0.5 # volatility
     std = daily_std * 252 ** 0.5 # volatility
-    return std
+    return float(std)

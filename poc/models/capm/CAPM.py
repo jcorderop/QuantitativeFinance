@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from poc.models.CommonModel import download_data
 
 # market interest rate
-RISK_FREE_RATE = 0.05
+RISK_FREE_RATE = 0.009
 
 # based in monthly returns that has be converted to years
 MONTHS_IN_YEARS = 12
@@ -70,7 +70,7 @@ class CAPM:
 
 
 if __name__ == '__main__':
-    camp = CAPM(['IBM', '^GSPC'], '2010-01-01', '2022-01-01')
+    camp = CAPM(['AAPL', '^GSPC'], '2010-01-01', '2022-01-01')
     camp.initialize()
     camp.calculate_beta()
     camp.regression()

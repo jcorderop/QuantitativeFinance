@@ -103,7 +103,7 @@ class OptionPricing:
 if __name__ == '__main__':
     #model = OptionPricing(100, 100, 1, 0.05, 0.2, 10000000)
     stock_name = 'IBM'
-    prices = stock = download_data_single(stock_name, '2010-01-01', '2020-01-01')
+    prices = download_data_single(stock_name, '2010-01-01', '2020-01-01')
     stock_price = float(prices.tail(1)['Close'])
     print("Stock price: ", stock_price)
     strike = stock_price * 1

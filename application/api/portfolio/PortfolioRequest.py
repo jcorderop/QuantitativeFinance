@@ -25,6 +25,7 @@ class PortfolioRequest:
 
     def __init__(self,
                  tickers,
+                 asset_class,
                  from_date=FROM_DATE,
                  to_date=TO_DATE,
                  quote_currency=QUOTE_CURRENCY,
@@ -33,6 +34,7 @@ class PortfolioRequest:
                  daily_return_fun="daily_pct_change_return",
                  solver=None):
         self.tickers = tickers
+        self.asset_class = asset_class
         self.from_date = from_date
         self.to_date = to_date
         self.quote_currency = quote_currency
@@ -45,6 +47,7 @@ class PortfolioRequest:
     def from_dict(obj: Any) -> 'PortfolioRequest':
         print('Request:', obj)
         _tickers = obj.get("tickers")
+        _asset_class = str(obj.get("asset_class"))
         _from_date = str(obj.get("from_date"))
         _to_date = str(obj.get("to_date"))
         _quote_currency = str(obj.get("quote_currency"))
@@ -58,6 +61,7 @@ class PortfolioRequest:
             _target = float(_solver.get("target", None))
             solver = Solver(_type, _target)
         new_request = PortfolioRequest(_tickers,
+                                       _asset_class,
                                        _from_date,
                                        _to_date,
                                        _quote_currency,

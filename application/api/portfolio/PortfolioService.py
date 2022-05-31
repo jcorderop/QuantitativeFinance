@@ -1,10 +1,16 @@
 from application.api.coinGecko.CoinGeckoApi import CoinGeckoApi
+from application.api.common.Constants import Asset
 from application.api.models.markowitz.MarkowitzModelApi import MarkowitzModelApi
+from poc.models.CommonModel import download_data
 
 
-def preparing_data_set(list_of_tickers, from_date, to_date, quote_currency):
+def preparing_crypto_data_set(list_of_tickers, from_date, to_date, quote_currency):
     papi = CoinGeckoApi(quote_currency)
     return papi.loading_historical_data(list_of_tickers, from_date, to_date)
+
+
+def preparing_stocks_data_set(list_of_tickers, from_date, to_date):
+    return download_data(list_of_tickers, from_date, to_date)
 
 
 def portfolio_calculation(data_set, period, num_portfolios, daily_return_callback, expected_return):
@@ -16,10 +22,18 @@ def portfolio_calculation(data_set, period, num_portfolios, daily_return_callbac
 
 def calculate_portfolio(pf_request):
     # data_set = preparing_data_set(CRYPTO_TICKERS, FROM_DATE, datetime.now().strftime(DateFormats.date_format), QUOTE_CURRENCY)
-    data_set = preparing_data_set(pf_request.tickers,
+    if pf_request.asset_class == Asset.STOCK:
+        data_set = preparing_stocks_data_set(pf_request.tickers,
                                   pf_request.from_date,
-                                  pf_request.to_date,
-                                  pf_request.quote_currency)
+                                  pf_request.to_date)
+    elif pf_request.asset_class == Asset.CRYPTO:
+        data_set = preparing_crypto_data_set(pf_request.tickers,
+                                             pf_request.from_date,
+                                             pf_request.to_date,
+                                             pf_request.quote_currency)
+    else:
+        raise Exception('Asset type [' + pf_request.asset_class + '] is not supported...')
+
     return portfolio_calculation(data_set,
                                  pf_request.period,
                                  pf_request.num_portfolios,

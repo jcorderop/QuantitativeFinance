@@ -6,3 +6,8 @@ class SolverType:
     RETURN = "Return"
     VOLATILITY = "Volatility"
 
+
+class Asset:
+    STOCK = 'STOCK'
+    CRYPTO = 'CRYPTO'
+
