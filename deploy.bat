@@ -1,4 +1,4 @@
-docker stop QuantitativeFinance-API
-docker build . -t jcorderop/QuantitativeFinance
-docker push docker.io/jcorderop/QuantitativeFinance
-docker run --rm --name exchange-api -p 5000:5000 -d jcorderop/QuantitativeFinance
+docker stop quantitative-finance-api
+docker build . -t jcorderop/quantitative-finance
+docker push docker.io/jcorderop/quantitative-finance
+docker run --rm --name quantitative-finance-api -p 5000:5000 -d jcorderop/quantitative-finance
