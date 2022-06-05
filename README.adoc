@@ -1,0 +1,28 @@
+== To Run the Exchange locally
+
+* The following instructions are used run the exchange service
+
+
+=== Install
+
+----
+pip install -r requirements.txt
+
+----
+
+=== Run stand-along
+
+----
+python QuantitativeFinance.py
+----
+
+=== Docker
+
+* deploy.bat is used to:
+* create the image
+* push the image into docker hub
+* to run the container
+
+== Service EndPoint
+
+http://localhost:5000/

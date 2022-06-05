@@ -1,6 +1,6 @@
 from application.api.coinGecko.CoinGeckoApi import CoinGeckoApi
 from application.api.common.Constants import Asset
-from application.api.models.markowitz.MarkowitzModelApi import MarkowitzModelApi
+from application.api.finance.models.markowitz.MarkowitzModelApi import MarkowitzModelApi
 from poc.models.CommonModel import download_data
 
 

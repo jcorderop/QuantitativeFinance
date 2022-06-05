@@ -1,6 +1,6 @@
-from application.api.capm.CapmRequest import CapmRequest, CRYPTO_TICKERS
+from application.api.capm.CapmRequest import CapmRequest
 from application.api.coinGecko.CoinGeckoApi import CoinGeckoApi
-from application.api.models.capm.CAPMApi import CAPMApi
+from application.api.finance.models.capm.CAPMApi import CAPMApi
 
 
 def preparing_data_set(list_of_tickers, from_date, to_date, quote_currency):
