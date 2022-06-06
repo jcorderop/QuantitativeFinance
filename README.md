@@ -9,4 +9,4 @@ Content:
 - Black-Scholes model.
 - How to eliminate risk with hedging.
 
-![img.png](docs/img.png)
+![img.png](QuantitativeFinanceApi/docs/img.png)
