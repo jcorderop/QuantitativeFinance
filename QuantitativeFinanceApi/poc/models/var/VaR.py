@@ -1,5 +1,6 @@
 import numpy as np
 from scipy.stats import norm
+import logging
 
 from QuantitativeFinanceApi.application.api.finance.models.markowitz.MarkowitzModelApi import daily_log_return
 from QuantitativeFinanceApi.poc.models.CommonModel import download_data_single
@@ -23,10 +24,10 @@ if __name__ == '__main__':
     start_date = '2010-01-01'
     end_date = '2022-01-01'
     data = download_data_single(stock_symbol, start_date, end_date)
-    print(data)
+    logging.info(data)
 
     data['returns'] = daily_log_return(data)[1:]
-    print(data)
+    logging.info(data)
 
     # investment S
     position = 1000000
@@ -37,8 +38,8 @@ if __name__ == '__main__':
     sigma = np.std(data['returns'])
 
     var = calculate_var(position=position, c=c, mu=mu, sigma=sigma)
-    print('Value at risk is: $%0.2f' % var)
+    logging.info('Value at risk is: $%0.2f' % var)
 
     days = 10
     var = calculate_var(position=position, c=c, mu=mu, sigma=sigma, n=days)
-    print('Value at risk in %s days is: $%0.2f' % (days, var))
+    logging.info('Value at risk in %s days is: $%0.2f' % (days, var))

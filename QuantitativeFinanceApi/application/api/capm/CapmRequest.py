@@ -1,6 +1,10 @@
 from dataclasses import dataclass
 from typing import Any
 
+from QuantitativeFinanceApi.application.api.common.QFLogger import QFLogger
+
+logger = QFLogger(logger_name=__name__).get_logger()
+
 CRYPTO_TICKERS = ['bnb', 'btc']
 
 FROM_DATE = '2018-01-01'
@@ -24,7 +28,7 @@ class CapmRequest:
 
     @staticmethod
     def from_dict(obj: Any) -> 'CapmRequest':
-        print('Request:', obj)
+        logger.info('New Request:'.format(obj))
         _tickers = obj.get("tickers")
         _from_date = str(obj.get("from_date"))
         _to_date = str(obj.get("to_date"))
@@ -33,5 +37,5 @@ class CapmRequest:
                                   _from_date,
                                   _to_date,
                                   _quote_currency)
-        print('Valid request:', new_request)
+        logger.info('Request was mapped properly...')
         return new_request

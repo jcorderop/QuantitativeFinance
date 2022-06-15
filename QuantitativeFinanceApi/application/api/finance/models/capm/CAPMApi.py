@@ -2,6 +2,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from QuantitativeFinanceApi.application.api.common.QFLogger import QFLogger
+
+logger = QFLogger(logger_name=__name__).get_logger()
+
 # market interest rate
 RISK_FREE_RATE = 0.011
 
@@ -17,17 +21,17 @@ class CAPMApi:
     def initialize(self, tickers, data_set):
         # calculate Monthly returns instead of daily returns
         stock_data = data_set.resample('M').last()
-        print(stock_data)
+        logger.info(stock_data)
         self.data = pd.DataFrame({
             's_close': stock_data[tickers[0]],
             'm_close': stock_data[tickers[1]]
         })
-        print(self.data)
+        logger.info(self.data)
         # log monthly returns
         self.data[['s_returns', 'm_returns']] = np.log(self.data[['s_close', 'm_close']] / self.data[['s_close', 'm_close']].shift(1))
         # remove the NaN values
         self.data = self.data[1:]
-        print(self.data)
+        logger.info(self.data)
 
     def calculate_beta(self):
         # covariance matrix: the diagonal items are the variances
@@ -35,17 +39,17 @@ class CAPMApi:
         # the matrix is symmetric: cov[0,1] = cov[1,0] !!!
         covariance_matrix = np.cov(self.data['s_returns'], self.data['m_returns'])
         beta = covariance_matrix[0, 1] / covariance_matrix[1, 1]
-        print("Beta: ", beta)
+        logger.info("Beta: ".format(beta))
 
     def regression(self):
         # using linear regression to fit a linear to the data
         # [stock_return, market_returns] - slope is the beta
         beta, alpha = np.polyfit(self.data['m_returns'], self.data['s_returns'], deg=1)
-        print("Beta from regression: ", beta)
+        logger.info("Beta from regression: ".format(beta))
         # calculate the expected return according to the CAPM formula
         # we are after annual return (this is why multiply by 12)
         expected_return = RISK_FREE_RATE + beta * (self.data['m_returns'].mean() * MONTHS_IN_YEARS - RISK_FREE_RATE)
-        print("Expected Return: ", expected_return)
+        logger.info("Expected Return: ".format(expected_return))
         self.plot_regression(beta, alpha)
         return beta, expected_return
 
@@ -60,7 +64,7 @@ class CAPMApi:
         plt.legend()
         plt.grid(True)
         plt.show()
-"sol", "trx", "shib", "midas", "xnc", "paxg", "axs", "matic"
+
 
 if __name__ == '__main__':
     camp = CAPMApi(['IBM', '^GSPC'], '2010-01-01', '2022-01-01')

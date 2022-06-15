@@ -9,7 +9,7 @@ from scipy.stats import norm
 
 from QuantitativeFinanceApi.application.api.capm.CapmService import preparing_data_set
 
-NUM_OF_SIMULATIONS = 1000000
+NUM_OF_SIMULATIONS = 10000
 
 
 NUM_TRADING_DAYS = 252
