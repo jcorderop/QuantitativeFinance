@@ -1,0 +1,513 @@
+{
+	"info": {
+		"_postman_id": "27b5511a-d74c-4272-b9a7-0d72b7eb8447",
+		"name": "Portfolio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17782228"
+	},
+	"item": [
+		{
+			"name": "Calculate Portfolio  All",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"btc\", \"eth\", \"bnb\", \"sol\", \"luna\", \"xrp\",\r\n                  \"leo\", \"kcs\", \"ftm\", \"midas\", \"ftt\",\r\n                  \"cro\", \"cake\", \"shib\", \"ada\", \"avax\",\r\n                  \"trx\", \"ltc\", \"matic\", \"okb\", \"klay\",\r\n                  \"doge\", \"dot\", \"steth\", \"near\", \"xmr\",\r\n                  \"link\", \"atom\", \"xlm\", \"etc\", \"flow\",\r\n                  \"algo\", \"uni\", \"ape\", \"vet\", \"xnc\",\r\n                  \"paxg\", \"xtz\", \"icp\", \"axs\", \"fil\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-06-08\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/portfolio/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"portfolio",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Portfolio  crypto-stocks",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"TSLA\", \"GLD\", \"GBTC\", \"GOOGL\", \"AAPL\", \"BNTX\", \"MRNA\", \"PENN\", \"NFLX\"],\r\n    \"asset_class\": \"STOCK\",\r\n    \"from_date\": \"2000-01-01\",\r\n    \"to_date\": \"2022-05-29\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 252,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_log_return\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/portfolio/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"portfolio",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Portfolio  Proposal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"bnb\", \"sol\", \"trx\", \"shib\", \"midas\", \"xnc\", \"paxg\", \"axs\", \"matic\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\",\r\n    \"solver\": {\r\n        \"type\": \"Return\",\r\n        \"target\": 2.5\r\n    }\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/portfolio/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"portfolio",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate My Portfolio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"btc\", \"eth\", \"bnb\", \"sol\", \"ftt\", \"ftm\", \"midas\", \"cro\", \"trx\", \"ada\", \"cake\", \"shib\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/portfolio/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"portfolio",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate My Portfolio - Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"bnb\", \"eth\", \"cro\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/portfolio/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"portfolio",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Portfolio  My Proposal - pct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"eth\", \"bnb\", \"sol\", \"ftt\", \"trx\", \"shib\", \"midas\", \"cro\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/portfolio/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"portfolio",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Portfolio  My Proposal - log",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"eth\", \"bnb\", \"sol\", \"ftt\", \"trx\", \"shib\", \"midas\", \"cro\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_log_return\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/portfolio/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"portfolio",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate CAPM bnb/btc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"bnb\", \"btc\"],\r\n    \"from_date\": \"2017-10-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/capm/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"capm",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate CAPM sol/btc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"sol\", \"btc\"],\r\n    \"from_date\": \"2020-04-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/capm/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"capm",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate CAPM midas/btc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"midas\", \"btc\"],\r\n    \"from_date\": \"2018-11-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/capm/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"capm",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate CAPM xnc/btc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"xnc\", \"btc\"],\r\n    \"from_date\": \"2020-10-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/capm/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"capm",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate CAPM paxg/btc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"paxg\", \"btc\"],\r\n    \"from_date\": \"2019-10-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/capm/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"capm",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate CAPM axs/btc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"axs\", \"btc\"],\r\n    \"from_date\": \"2020-11-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/capm/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"capm",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate CAPM matic/btc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"matic\", \"btc\"],\r\n    \"from_date\": \"2019-05-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/capm/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"capm",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate CAPM leo/btc",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tickers\": [\"leo\", \"btc\"],\r\n    \"from_date\": \"2022-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\"\r\n}\r\n       ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/capm/calculate",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"capm",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Streams",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/plot/time",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"plot",
+						"time"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
