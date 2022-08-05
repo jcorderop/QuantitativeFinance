@@ -77,8 +77,8 @@ class CoinGeckoApi(object):
         to_timestamp = __convert_date_to_timestamp__(to_date)
         coin_id = self.get_coin_id(ticker)
         logger.info('ticker: {}, name: {}'.format(ticker, coin_id))
-
-        time.sleep(1)
+        print("CoinGecko waiting for next request...")
+        time.sleep(2)
         historic_data = self.api_cg.get_coin_market_chart_range_by_id(id=coin_id,
                                                                       vs_currency=self.quote_currency,
                                                                       from_timestamp=from_timestamp,

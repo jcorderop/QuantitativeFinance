@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tickers\": [\"btc\", \"eth\", \"bnb\", \"sol\", \"luna\", \"xrp\",\r\n                  \"leo\", \"kcs\", \"ftm\", \"midas\", \"ftt\",\r\n                  \"cro\", \"cake\", \"shib\", \"ada\", \"avax\",\r\n                  \"trx\", \"ltc\", \"matic\", \"okb\", \"klay\",\r\n                  \"doge\", \"dot\", \"steth\", \"near\", \"xmr\",\r\n                  \"link\", \"atom\", \"xlm\", \"etc\", \"flow\",\r\n                  \"algo\", \"uni\", \"ape\", \"vet\", \"xnc\",\r\n                  \"paxg\", \"xtz\", \"icp\", \"axs\", \"fil\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-06-08\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\"\r\n}\r\n       ",
+					"raw": "{\r\n    \"tickers\": [\"btc\", \"eth\", \"bnb\", \"sol\", \"luna\", \"xrp\",\r\n                  \"leo\", \"kcs\", \"ftm\", \"midas\", \"ftt\",\r\n                  \"cro\", \"cake\", \"shib\", \"ada\", \"avax\",\r\n                  \"trx\", \"ltc\", \"matic\", \"okb\", \"klay\",\r\n                  \"doge\", \"dot\", \"steth\", \"near\", \"xmr\",\r\n                  \"link\", \"atom\", \"xlm\", \"etc\", \"flow\",\r\n                  \"algo\", \"uni\", \"ape\", \"vet\", \"xnc\",\r\n                  \"paxg\", \"xtz\", \"icp\", \"axs\", \"fil\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-07-22\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_simulations\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\",\r\n    \"future_price\": false\r\n}\r\n       ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -45,7 +45,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tickers\": [\"TSLA\", \"GLD\", \"GBTC\", \"GOOGL\", \"AAPL\", \"BNTX\", \"MRNA\", \"PENN\", \"NFLX\"],\r\n    \"asset_class\": \"STOCK\",\r\n    \"from_date\": \"2000-01-01\",\r\n    \"to_date\": \"2022-05-29\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 252,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_log_return\"\r\n}\r\n       ",
+					"raw": "{\r\n    \"tickers\": [\"TSLA\", \"GLD\", \"GBTC\", \"GOOGL\", \"AAPL\", \"BNTX\", \"MRNA\", \"PENN\", \"NFLX\"],\r\n    \"asset_class\": \"STOCK\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-07-22\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 252,\r\n    \"num_simulations\": 1000,\r\n    \"daily_return_fun\": \"daily_log_return\",\r\n    \"future_price\": false\r\n}\r\n       ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -77,7 +77,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tickers\": [\"bnb\", \"sol\", \"trx\", \"shib\", \"midas\", \"xnc\", \"paxg\", \"axs\", \"matic\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\",\r\n    \"solver\": {\r\n        \"type\": \"Return\",\r\n        \"target\": 2.5\r\n    }\r\n}\r\n       ",
+					"raw": "{\r\n    \"tickers\": [\"bnb\", \"sol\", \"trx\", \"shib\", \"midas\", \"xnc\", \"paxg\", \"axs\", \"matic\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\",\r\n    \"solver\": {\r\n        \"type\": \"Return\",\r\n        \"target\": 2.5\r\n    },\r\n    \"future_price\": true\r\n}\r\n       ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -109,7 +109,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tickers\": [\"btc\", \"eth\", \"bnb\", \"sol\", \"ftt\", \"ftm\", \"midas\", \"cro\", \"trx\", \"ada\", \"cake\", \"shib\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\"\r\n}",
+					"raw": "{\r\n    \"tickers\": [\"btc\", \"eth\", \"bnb\", \"sol\", \"ftt\", \"ftm\", \"midas\", \"cro\", \"trx\", \"ada\", \"cake\", \"shib\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\",\r\n    \"future_price\": true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -141,7 +141,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tickers\": [\"bnb\", \"eth\", \"cro\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\"\r\n}",
+					"raw": "{\r\n    \"tickers\": [\"bnb\", \"eth\", \"cro\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\",\r\n    \"future_price\": true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -173,7 +173,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tickers\": [\"eth\", \"bnb\", \"sol\", \"ftt\", \"trx\", \"shib\", \"midas\", \"cro\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\"\r\n}\r\n       ",
+					"raw": "{\r\n    \"tickers\": [\"eth\", \"bnb\", \"sol\", \"ftt\", \"trx\", \"shib\", \"midas\", \"cro\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-07-22\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_simulations\": 1000,\r\n    \"daily_return_fun\": \"daily_pct_change_return\",\r\n    \"future_price\": true\r\n}\r\n       ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -181,13 +181,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/portfolio/calculate",
+					"raw": "http://localhost:5000/portfolio/calculate",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"localhost"
 					],
 					"port": "5000",
 					"path": [
@@ -205,7 +202,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"tickers\": [\"eth\", \"bnb\", \"sol\", \"ftt\", \"trx\", \"shib\", \"midas\", \"cro\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_log_return\"\r\n}\r\n       ",
+					"raw": "{\r\n    \"tickers\": [\"eth\", \"bnb\", \"sol\", \"ftt\", \"trx\", \"shib\", \"midas\", \"cro\"],\r\n    \"asset_class\": \"CRYPTO\",\r\n    \"from_date\": \"2014-01-01\",\r\n    \"to_date\": \"2022-05-23\",\r\n    \"quote_currency\": \"usd\",\r\n    \"period\": 365,\r\n    \"num_portfolios\": 1000,\r\n    \"daily_return_fun\": \"daily_log_return\",\r\n    \"future_price\": true\r\n}\r\n       ",
 					"options": {
 						"raw": {
 							"language": "json"
