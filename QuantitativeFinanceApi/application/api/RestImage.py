@@ -9,7 +9,7 @@ from matplotlib.figure import Figure
 plot = Blueprint('plot', __name__)
 plot.url_prefix = '/plot'
 
-@plot.route("/")
+@plot.route("/plot/")
 def hello():
     # Generate the figure **without using pyplot**.
     fig = Figure()

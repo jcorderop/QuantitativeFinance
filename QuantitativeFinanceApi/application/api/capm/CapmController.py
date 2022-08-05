@@ -20,7 +20,7 @@ APPLICATION_JSON = 'application/json'
 requestIdGenerator = RequestId()
 
 
-@capm.route('/')
+@capm.route('/capm/')
 def index():
     return Response(json.dumps("CAPM API"), mimetype=APPLICATION_JSON)
 
