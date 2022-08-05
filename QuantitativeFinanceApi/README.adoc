@@ -23,6 +23,8 @@ python QuantitativeFinance.py
 * push the image into docker hub
 * to run the container
 
+docker run --rm --name quantitative-finance-api -p 5000:5000 -d jcorderop/quantitative-finance
+
 == Service EndPoint
 
 http://localhost:5000/
