@@ -3,9 +3,11 @@ import traceback
 
 from flask import Blueprint, Response, request
 
+from QuantitativeFinanceApi.application.api.common.YahooFinanceApi import preparing_dataset
 from QuantitativeFinanceApi.application.api.common.QFException import QFException
 from QuantitativeFinanceApi.application.api.common.QFLogger import QFLogger
-from QuantitativeFinanceApi.application.api.common.Responses import CommonResponse, PortfolioResponse, Status
+from QuantitativeFinanceApi.application.api.common.Responses import CommonResponse, PortfolioResponse, Status, \
+    TickerValidationResponse
 from QuantitativeFinanceApi.application.api.common.Storage import RequestId
 from QuantitativeFinanceApi.application.api.portfolio import PortfolioRequest, PortfolioService
 
@@ -41,9 +43,12 @@ def calculate_portfolio():
     if content_type == 'application/json':
         pf_request = PortfolioRequest.PortfolioRequest.from_dict(request.json)
         try:
+            data_set = preparing_dataset(pf_request)
             performance, weights_by_underlying, performance_by_underlying = PortfolioService.calculate_portfolio(request_id,
-                                                                                                                 pf_request)
-            future_prices = PortfolioService.calculate_future_price(pf_request)
+                                                                                                                 pf_request,
+                                                                                                                 data_set)
+            future_prices = PortfolioService.calculate_future_price(pf_request,
+                                                                    data_set)
             urls = PortfolioService.get_relevant_urls(request_id, pf_request)
 
             return Response(json.dumps(PortfolioResponse(request_id,
@@ -62,6 +67,29 @@ def calculate_portfolio():
             traceback.print_stack()
             return Response(
                 json.dumps(CommonResponse(request_id, Status.error, 'Internal error, check the request').__dict__),
+                mimetype=APPLICATION_JSON)
+
+    else:
+        return Response(json.dumps(CommonResponse(request_id, Status.error, 'Content-Type not supported!').__dict__),
+                        mimetype=APPLICATION_JSON)
+
+
+@portfolio.route('/validate_ticker', methods=['POST'])
+def validate_ticker():
+    request_id = RequestId().get_next_request_id()
+    logger.info('New request: {}'.format(request_id))
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':
+        try:
+            tickers = request.json
+            invalid_tickers = PortfolioService.validate_tickers(tickers)
+            return Response(json.dumps(TickerValidationResponse(request_id,
+                                                                invalid_tickers).__dict__),
+                            mimetype=APPLICATION_JSON)
+        except QFException as e:
+            traceback.print_stack()
+            return Response(
+                json.dumps(CommonResponse(request_id, Status.error, 'Invalid request: ' + e.__str__()).__dict__),
                 mimetype=APPLICATION_JSON)
 
     else:

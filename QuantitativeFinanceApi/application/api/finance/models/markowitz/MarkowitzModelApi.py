@@ -126,7 +126,11 @@ def calculate_portfolio_volatility(daily_return, weights, period):
 
 # sharp ratio
 def calculate_sharp_ratio(portfolio_mean, portfolio_risk):
-    return portfolio_mean / portfolio_risk
+    sharp_ratio = 0.0
+    if portfolio_risk and portfolio_risk != 0.0:
+        sharp_ratio = portfolio_mean / portfolio_risk
+    #print("calculate_sharp_ratio: {} / {} = {}".format(portfolio_mean, portfolio_risk, sharp_ratio))
+    return sharp_ratio
 
 
 def generate_portfolios(daily_return, period, num_portfolios):
@@ -303,11 +307,22 @@ class MarkowitzModelApi(object):
                                                             weight,
                                                             self.period)
 
+            print("Underlying: {}, performance_udl: {}".format(udl, performance_udl))
+
+            mean = performance_udl[0]
+            risk = performance_udl[1][0][0]
+            ratio = 0.0
+            try:
+                ratio = performance_udl[2][0][0]
+            except:
+                pass
+
             performance_by_underlying[udl] = {
-                'mean': performance_udl[0],
-                'risk': performance_udl[1][0][0],
-                'ratio': performance_udl[2][0][0]
+                "mean": mean,
+                "risk": risk,
+                "ratio": ratio
             }
+            print("Underlying: {}, performance_udl: {}".format(udl, performance_udl))
 
         logger.info('Calculating performance by underlying...')
         logger.info('\n{}'.format(performance_by_underlying))

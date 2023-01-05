@@ -4,7 +4,6 @@ import numpy.random as npr
 import pandas as pd
 from scipy.stats import norm
 
-from QuantitativeFinanceApi.application.api.capm.CapmService import preparing_data_set
 from QuantitativeFinanceApi.application.api.common.QFLogger import QFLogger
 
 logger = QFLogger(logger_name=__name__).get_logger()
@@ -101,28 +100,27 @@ def calc_sigma(data_temp):
 
 
 def monte_carlo_price_simulation(ticker,
-                                 from_date='2010-01-01',
-                                 to_date='2010-01-01',
-                                 quote_currency='usd',
-                                 future_date=NUM_TRADING_DAYS,
+                                 data_set,
+                                 future_days,
                                  num_simulations=NUM_OF_SIMULATIONS):
-    data = preparing_data_set([ticker], from_date, to_date, quote_currency)
-    close_price = float(data.tail(1)[ticker])
-    log_return = log_returns(data)
-    mean = log_return.mean().values[0]
-    sigma = calc_sigma(data)
-    simulation_data = stock_monte_carlo(close_price, mean, sigma, future_date, num_simulations)
+    close_price = float(data_set.tail(1))
+    log_return = log_returns(data_set)
+    mean = log_return.mean()
+    sigma = calc_sigma(data_set)
+    simulation_data = stock_monte_carlo(close_price, mean, sigma, future_days, num_simulations)
     #plot_simulation(simulation_data)
     #plot_simulation_mean(simulation_data)
     future_price = result_price(ticker, simulation_data)
-    return  '{:.8f}'.format(close_price), '{:.8f}'.format(future_price)
+    return '{:.8f}'.format(close_price), '{:.8f}'.format(future_price)
 
 
 # https://medium.com/analytics-vidhya/monte-carlo-simulations-for-predicting-stock-prices-python-a64f53585662
 # https://github.com/eliasmelul/finance_portfolio
 if __name__ == '__main__':
+    '''
     monte_carlo_price_simulation(ticker='btc',
                                  from_date='2010-01-01',
                                  to_date='2022-06-14',
                                  quote_currency='usd',
                                  future_date=365)
+    '''

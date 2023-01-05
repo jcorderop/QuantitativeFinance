@@ -60,7 +60,6 @@ class OptionPricing:
         print("Call Option Price: ", option_price)
         return option_price
 
-
     def put_option_simulation(self):
         # 2 columns
         # fist with 0s => pay off function => max(E-S, 0) for put option
@@ -97,6 +96,7 @@ class OptionPricing:
         option_price = np.exp(-1.0 * self.rf * self.T) * average
         print("Put Option Price: ", option_price)
         return option_price
+
 
 if __name__ == '__main__':
     #model = OptionPricing(100, 100, 1, 0.05, 0.2, 10000000)

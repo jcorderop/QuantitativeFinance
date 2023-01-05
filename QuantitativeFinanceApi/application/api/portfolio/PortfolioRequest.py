@@ -35,9 +35,10 @@ class PortfolioRequest:
                  quote_currency=QUOTE_CURRENCY,
                  period=PERIOD,
                  num_simulations=NUM_SIMULATIONS,
-                 daily_return_fun="daily_pct_change_return",
+                 daily_return_fun="daily_log_return",
                  solver=None,
-                 future_price=None):
+                 future_price=None,
+                 future_days=21):
         self.tickers = tickers
         self.asset_class = asset_class
         self.from_date = from_date
@@ -48,10 +49,11 @@ class PortfolioRequest:
         self.daily_return_fun = daily_return_fun
         self.solver = solver
         self.future_price = future_price
+        self.future_days = future_days
 
     @staticmethod
     def from_dict(obj: Any) -> 'PortfolioRequest':
-        logger.info('Request:'.format(obj))
+        logger.info('Request: {}'.format(obj))
         _tickers = obj.get("tickers")
         _asset_class = str(obj.get("asset_class"))
         _from_date = str(obj.get("from_date"))
@@ -68,6 +70,7 @@ class PortfolioRequest:
             solver = Solver(_type, _target)
 
         _future_price = bool(obj.get("future_price"))
+        _future_days = int(obj.get("future_days"))
         new_request = PortfolioRequest(_tickers,
                                        _asset_class,
                                        _from_date,
@@ -77,7 +80,8 @@ class PortfolioRequest:
                                        _num_simulations,
                                        _daily_return_fun,
                                        solver,
-                                       _future_price)
+                                       _future_price,
+                                       _future_days)
         logger.info('Request was mapped properly...')
         return new_request
 

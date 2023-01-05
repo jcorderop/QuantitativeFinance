@@ -10,6 +10,12 @@ pip install -r requirements.txt
 
 ----
 
+=== Update python libs
+----
+pip install yfinance --upgrade --no-cache-dir
+
+----
+
 === Run stand-along
 
 ----

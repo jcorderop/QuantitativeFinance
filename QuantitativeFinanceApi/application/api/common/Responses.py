@@ -28,3 +28,9 @@ class CapmResponse(CommonResponse):
         super(CapmResponse, self).__init__(request_id=request_id, status=Status.successful, message='Completed...')
         self.beta = beta
         self.expected_return = expected_return
+
+
+class TickerValidationResponse(CommonResponse):
+    def __init__(self, request_id, invalid_tickers):
+        super(TickerValidationResponse, self).__init__(request_id=request_id, status=Status.successful, message='Completed...')
+        self.invalid_tickers = invalid_tickers
